@@ -16,7 +16,7 @@ export const CategoryGrid = ({ categories }: CategoryGridProps) => {
       animate="animate"
     >
       {categories.map((category) => (
-        <motion.div key={category.id} variants={staggerItem}>
+        <motion.div key={category.id} variants={staggerItem} className="h-full">
           <CategoryCard category={category} />
         </motion.div>
       ))}

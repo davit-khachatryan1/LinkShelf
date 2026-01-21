@@ -22,8 +22,9 @@ export const SiteCard = ({ site }: SiteCardProps) => {
     <motion.div
       whileHover={cardHover}
       whileTap={cardTap}
+      className="h-full"
     >
-      <Card variant={variant} className="group h-full p-6 hover:shadow-2xl transition-all duration-300">
+      <Card variant={variant} className="group p-6 hover:shadow-2xl transition-all duration-300">
         <div className="flex h-full flex-col">
           <div className="mb-3 flex items-start justify-between">
             <div className="flex-1 min-w-0">
@@ -41,7 +42,7 @@ export const SiteCard = ({ site }: SiteCardProps) => {
             )}
           </div>
           
-          <p className="mb-4 flex-1 text-sm text-gray-700 dark:text-gray-300 line-clamp-3 leading-relaxed">
+          <p className="mb-4 flex-1 text-sm text-gray-700 dark:text-gray-300 line-clamp-3 leading-relaxed min-h-[4.5rem]">
             {site.description}
           </p>
           
@@ -60,7 +61,7 @@ export const SiteCard = ({ site }: SiteCardProps) => {
             href={site.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black rounded-xl"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black rounded-xl mt-auto"
           >
             <Button variant="primary" size="sm" className="w-full">
               Visit Site →

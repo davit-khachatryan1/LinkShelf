@@ -19,6 +19,7 @@ const categoryVariants: Record<string, 'blue' | 'purple' | 'green' | 'pink' | 'o
   'business-finance': 'green',
   'tech-learning': 'purple',
   'open-source': 'orange',
+  'prompt-engineering': 'purple',
 };
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
@@ -28,13 +29,14 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
     <motion.div
       whileHover={cardHover}
       whileTap={cardTap}
+      className="h-full"
     >
       <Link
         to={`/category/${category.slug}`}
         className="block h-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black rounded-2xl"
       >
-        <Card variant={variant} className="group h-full p-6 hover:shadow-2xl transition-all duration-300">
-          <div className="flex flex-col items-center text-center">
+        <Card variant={variant} className="group p-6 hover:shadow-2xl transition-all duration-300">
+          <div className="flex h-full flex-col items-center justify-center text-center">
             <motion.div 
               className="mb-4 text-6xl"
               whileHover={{ scale: 1.1, rotate: 5 }}

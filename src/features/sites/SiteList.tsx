@@ -24,7 +24,7 @@ export const SiteList = ({ sites }: SiteListProps) => {
       animate="animate"
     >
       {sites.map((site) => (
-        <motion.div key={site.id} variants={staggerItem}>
+        <motion.div key={site.id} variants={staggerItem} className="h-full">
           <SiteCard site={site} />
         </motion.div>
       ))}
