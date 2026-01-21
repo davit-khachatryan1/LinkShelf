@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { CategoryGrid } from '../features/categories/CategoryGrid';
 import { SiteList } from '../features/sites/SiteList';
 import { HomeFilters } from '../features/sites/HomeFilters';
+import { SearchBar } from '../features/search/SearchBar';
 import { categories, sites } from '../data/links';
 import { useSearch } from '../contexts/SearchContext';
 import { sortSites } from '../shared/lib/utils';
 
 export const Home = () => {
-  const { searchResults, isSearching } = useSearch();
+  const { searchResults, isSearching, setSearchResults, setIsSearching } = useSearch();
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     categories.map((c) => c.id) // Start with all categories selected
   );
@@ -35,6 +36,11 @@ export const Home = () => {
       // Select all
       setSelectedCategories(categories.map((c) => c.id));
     }
+  };
+
+  const handleSearch = (results: typeof sites) => {
+    setSearchResults(results);
+    setIsSearching(results.length > 0);
   };
 
   const featuredSites = useMemo(() => {
@@ -99,6 +105,16 @@ export const Home = () => {
           onCategoryToggle={handleCategoryToggle}
           onSelectAll={handleSelectAll}
         />
+
+        {/* Search Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 mx-auto w-full"
+        >
+          <SearchBar onSearch={handleSearch} allSites={sites} />
+        </motion.div>
       </div>
 
       {/* Search Results */}

@@ -1,30 +1,20 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
-import { SearchBar } from '../../features/search/SearchBar';
 import { useDarkMode } from '../../hooks/useDarkMode';
-import { useSearch } from '../../contexts/SearchContext';
-import { sites } from '../../data/links';
 
 export const Navbar = () => {
   const location = useLocation();
   const { isDark, toggleDarkMode } = useDarkMode();
-  const { setSearchResults, setIsSearching } = useSearch();
 
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
   ];
 
-  const handleSearch = (results: typeof sites) => {
-    setSearchResults(results);
-    setIsSearching(results.length > 0);
-  };
-
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm dark:border-gray-800 dark:bg-black/95 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top section with logo and nav */}
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 group">
             <motion.span
@@ -69,11 +59,6 @@ export const Navbar = () => {
               {isDark ? '☀️' : '🌙'}
             </Button>
           </div>
-        </div>
-
-        {/* Bottom section with search */}
-        <div className="border-t border-gray-200 py-4 dark:border-gray-800">
-          <SearchBar onSearch={handleSearch} allSites={sites} />
         </div>
       </div>
     </nav>
