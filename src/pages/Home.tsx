@@ -7,6 +7,7 @@ import { SearchBar } from '../features/search/SearchBar';
 import { categories, sites } from '../data/links';
 import { useSearch } from '../contexts/SearchContext';
 import { sortSites } from '../shared/lib/utils';
+import { SEO } from '../shared/components/SEO';
 
 export const Home = () => {
   const { searchResults, isSearching, setSearchResults, setIsSearching } = useSearch();
@@ -76,7 +77,14 @@ export const Home = () => {
   }, [selectedCategories]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="Curated Websites by Category"
+        description="Discover the best curated websites organized by category. Browse resources across AI, Web3, IoT, Cybersecurity, Product Hunt, Design Inspiration, Developer Tools, and more."
+        keywords="curated websites, website directory, AI resources, Web3 resources, IoT news, cybersecurity tools, product hunt, design inspiration, developer tools, tech resources, website discovery, featured websites"
+        url="/"
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Hero Section */}
       <div className="mb-16 text-center">
         <motion.h1
@@ -174,5 +182,6 @@ export const Home = () => {
         </div>
       )}
     </div>
+    </>
   );
 };

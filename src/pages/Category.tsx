@@ -5,6 +5,7 @@ import { categories, sites } from '../data/links';
 import { SiteList } from '../features/sites/SiteList';
 import { SortDropdown } from '../features/sites/SortDropdown';
 import { SortOption, sortSites } from '../shared/lib/utils';
+import { SEO } from '../shared/components/SEO';
 
 export const Category = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -27,19 +28,35 @@ export const Category = () => {
 
   if (!category) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
-          Category Not Found
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          The category you're looking for doesn't exist.
-        </p>
-      </div>
+      <>
+        <SEO
+          title="Category Not Found"
+          description="The category you're looking for doesn't exist."
+          noindex
+        />
+        <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+            Category Not Found
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            The category you're looking for doesn't exist.
+          </p>
+        </div>
+      </>
     );
   }
 
+  const categoryKeywords = `${category.name.toLowerCase()}, ${category.description}, curated websites, ${category.name} resources`;
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title={category.name}
+        description={`${category.description}. Browse curated ${category.name.toLowerCase()} websites and resources on LinkShelf.`}
+        keywords={categoryKeywords}
+        url={`/category/${category.slug}`}
+      />
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Category Header */}
       <div className="mb-10">
         <div className="mb-6 flex items-center space-x-4">
@@ -81,5 +98,6 @@ export const Category = () => {
       {/* Site List */}
       <SiteList sites={sortedSites} />
     </div>
+    </>
   );
 };

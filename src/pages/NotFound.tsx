@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../shared/ui/Button';
+import { SEO } from '../shared/components/SEO';
 
 export const NotFound = () => {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="Page Not Found - 404"
+        description="The page you're looking for doesn't exist or has been moved."
+        noindex
+      />
+      <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
       <h1 className="mb-4 text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
         404
       </h1>
@@ -19,5 +26,6 @@ export const NotFound = () => {
         </Button>
       </Link>
     </div>
+    </>
   );
 };

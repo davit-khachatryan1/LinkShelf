@@ -1,6 +1,15 @@
+import { SEO } from '../shared/components/SEO';
+
 export const About = () => {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="About LinkShelf"
+        description="Learn about LinkShelf, a curated directory of websites organized by category. Discover how we help you find the best resources across technology domains."
+        keywords="about linkshelf, website directory, curated websites, tech resources, about us"
+        url="/about"
+      />
+      <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-white">
         About LinkShelf
       </h1>
@@ -34,5 +43,6 @@ export const About = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
